@@ -1,0 +1,1 @@
+ gcc -I lib src/read_from_db.cpp  lib/libsqlite3.so -pthread -ldl
