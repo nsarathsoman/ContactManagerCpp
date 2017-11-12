@@ -1,1 +1,8 @@
  gcc -I lib src/read_from_db.cpp  lib/libsqlite3.so -pthread -ldl
+
+ gcc -c -fPIC -I lib -I src src/data_access.cpp   lib/libsqlite3.so -pthread -ldl -o lib/data_access.o
+
+ gcc -shared -I lib/ data_access.o -o lib/libdataaccess.so
+
+ gcc -c src/main.cpp -o main.o -I src/
+ gcc main.o -o main lib/libdataaccess.so lib/libsqlite3.so -pthread -ldl
